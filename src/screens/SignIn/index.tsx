@@ -34,14 +34,10 @@ export function SignIn() {
   useEffect(() => {
     if (response?.type === 'success'){
       if(response.authentication?.idToken){
-        console.log('token => ', response.authentication.idToken)
-        fetch(`https://googleapis.com/oauth2/v3/tokeninfo?=id_token=${response.authentication?.idToken}`)
-        .then(response => {
-          response.json()
-          console.log('erro aqui')
-        })
-        .then(data => console.log(data))
-
+        console.log('TOKEN DE ACESSO', response.authentication?.idToken)
+        fetch(`https://googleapis.com/oauth2/v3/tokeninfo?id_token=${response.authentication?.idToken}`)
+        .then(response => response.json())
+        .then(console.log)
       } else {
         setIsAuthenticating(false)
         Alert.alert('Entrar', 'Não foi possível conectar-se à sua conta GOOGLE')
