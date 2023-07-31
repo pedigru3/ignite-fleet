@@ -6,11 +6,12 @@ type Props = TouchableOpacityProps & {
   isLoading?: boolean
 }
 
-export function Button({isLoading = false, title}: Props) {
+export function Button({ isLoading = false, title, ...rest }: Props) {
   return (
     <Container
       activeOpacity={0.7}
       disabled={isLoading}
+      {...rest}
     >
       {
         isLoading ?
